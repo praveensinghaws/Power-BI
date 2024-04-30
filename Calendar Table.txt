@@ -1,0 +1,29 @@
+Calendar_Table = 
+VAR mindate = MIN(Sales_Data[Date_Key])
+VAR maxdate = MAX(Sales_Data[Date_Key])
+
+RETURN
+ADDCOLUMNS(
+    CALENDAR(mindate, maxdate),
+    "Year", YEAR([Date]),
+    "Quarter", QUARTER([Date]),
+    "QuarterName", "Q" & QUARTER([Date]),
+    "Month", MONTH([Date]),
+    "MonthName", FORMAT([Date], "MMM"),
+    "Weeknumber", WEEKNUM([Date]),
+    "Day", DAY([Date]),
+    "DayName", FORMAT([Date], "DDDD")
+)
+
+Calendar_Auto_Table =
+ADDCOLUMNS (
+    CALENDARAUTO (),
+    "YEAR", YEAR ( [Date] ),
+    "QTR", QUARTER ( [Date] ),
+    "QTRNAME", "Q" & QUARTER ( [Date] ),
+    "MONTH", MONTH ( [Date] ),
+    "MONTHNAME", FORMAT ( [Date], "MMM" ),
+    "WEEKNUMBER", WEEKNUM ( [Date] ),
+    "DAYNAME", FORMAT ( [Date], "DDDD" ),
+    "DAY", DAY ( [Date] )
+)
