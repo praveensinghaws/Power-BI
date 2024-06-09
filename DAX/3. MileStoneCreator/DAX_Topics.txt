@@ -1,0 +1,93 @@
+****************
+ DAX Functions
+****************
+	1. Text/String Functions
+	*************************
+		A. DAX Operations
+		-----------------
+		   > Arithmetical Operators
+			· Add(+)
+			· Substract(-)
+			· Multiply(·)
+			· Division(/)
+		   > Comparison Operators
+			· Equal To (=)
+			· Greater Than (>)
+			· Greater Than or Equals To (>=)
+			. Less Than (<)
+			. Less Than or Equals To ( <= )
+			· Not Equal To (<>)
+		   > Concatenation Operators
+			. Apmersand(&)
+
+		   > Logical Operators
+
+			. && (And) - Double Ampersand Symbol
+			. || (Or) - Double Pipe Symbol
+			· IN {}
+	
+		B. Text/String Functions
+		------------------------
+
+			· Len()
+			· Concatenate()
+			· Left()
+			· Right()
+			· Mid()
+  			   · Similar to substring()
+			· Upper()
+			· Lower()
+			· Trim()
+			· Substitute()
+			· Replace()
+			· Blank()
+
+	2. Logical Functions
+	*********************
+		> IF()
+		> IF..ELSE()
+		> Nested IF()
+		> True() and False()
+		> Switch()
+		> IFError()
+
+	3. Date and Time Functions
+	**************************
+		· Year()
+		· Quarter()
+		· Month()
+		· Week()
+		· Day()
+		· EOMONTH()
+		· DateDiff()
+
+	· Calendar()
+		· CALENDAR(Date(2015,01,01),
+			Date(2020,12,31))
+	· CalendarAuto()
+		· DimTime = CALENDARAUTO()
+		· Date()
+		· FORMAT()
+		· Today()
+		· Now()
+
+	4. Math and Statistical Functions
+	*********************************
+		· INT()
+		· Currency()
+		· Round()
+		· RoundUp()
+		· RoundDown()
+		· Divide ()
+		· Even()
+		· Odd ()
+		· Power()
+		· Sqrt()
+		· Factorial()
+		· Sign()
+
+	5. Filter Function
+	******************
+
+	6. Time Intelligence Functions
+	******************************
