@@ -1,3 +1,23 @@
+-- SQLBI
+Date = 
+VAR MinYear = YEAR ( MIN ( Sales[Order Date] ) )
+VAR MaxYear = YEAR ( MAX ( Sales[Order Date] ) )
+RETURN
+ADDCOLUMNS ( 
+    FILTER ( 
+        CALENDARAUTO( ), 
+        AND ( YEAR ( [Date] ) >= MinYear, YEAR ( [Date] ) <= MaxYear )
+    ),
+    "Calendar Year", "CY " & YEAR ( [Date] ),
+    "Month Name", FORMAT ( [Date], "mmmm" ),
+    "Month Number", MONTH ( [Date] ),
+	"Weekday", FORMAT ( [Date], "dddd" ),
+    "Weekday number", WEEKDAY( [Date] ),
+    "Quarter", "Q" & TRUNC ( ( MONTH ( [Date] ) - 1 ) / 12 ) + 1
+) 
+
+
+
 Calendar_Table = 
 VAR mindate = MIN(Sales_Data[Date_Key])
 VAR maxdate = MAX(Sales_Data[Date_Key])
