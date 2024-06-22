@@ -17,23 +17,39 @@ ADDCOLUMNS (
 ) 
 
 
-
-Calendar_Table = 
-VAR mindate = MIN(Sales_Data[Date_Key])
-VAR maxdate = MAX(Sales_Data[Date_Key])
-
+Calendar_Table =
+VAR mindate = MIN(Sales[Order Date])
+VAR maxdate = MAX(Sales[Order Date])
 RETURN
 ADDCOLUMNS(
     CALENDAR(mindate, maxdate),
+    "DateKey", FORMAT([Date], "YYYYMMDD"),
     "Year", YEAR([Date]),
     "Quarter", QUARTER([Date]),
     "QuarterName", "Q" & QUARTER([Date]),
     "Month", MONTH([Date]),
     "MonthName", FORMAT([Date], "MMM"),
-    "Weeknumber", WEEKNUM([Date]),
+    "WeekNumber", WEEKNUM([Date]),
+    "WeekdayNumber", WEEKDAY([Date]),
     "Day", DAY([Date]),
-    "DayName", FORMAT([Date], "DDDD")
+    "DayName", FORMAT([Date], "dddd")
 )
+
+Fiscal_Calendar_Table = 
+ADDCOLUMNS(
+    CALENDARAUTO(3),
+    "DateKey", FORMAT([Date], "YYYYMMDD"),
+    "FinancialYear", 
+    VAR Check = MONTH([Date]) >= 4
+    VAR CY = RIGHT(YEAR([Date]),2)
+    VAR NY = RIGHT(YEAR([Date]) + 1, 2)
+    VAR PY = RIGHT(YEAR([Date]) - 1, 2)
+    RETURN IF(Check, CY & "-" & NY, PY & "-" & CY),
+    "Qtr", FORMAT(EDATE([Date],-3),"\QQ"),
+    "MonthSort", MONTH(EDATE([Date],-3)),
+    "Month", FORMAT([Date], "MMM")
+)
+
 
 Calendar_Auto_Table =
 ADDCOLUMNS (
